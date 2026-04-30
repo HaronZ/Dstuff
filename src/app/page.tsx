@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ProductCard } from "@/components/product/ProductCard";
-import { getNewDrops } from "@/data/products";
+import { getNewDrops } from "@/lib/products-db";
 import type { Category } from "@/types";
+
+export const dynamic = "force-dynamic";
 
 const categoryTiles: { label: Category; emoji: string; color: string }[] = [
   { label: "Tops", emoji: "👕", color: "bg-blue-50 hover:bg-blue-100" },
@@ -13,8 +15,8 @@ const categoryTiles: { label: Category; emoji: string; color: string }[] = [
   { label: "Accessories", emoji: "🕶️", color: "bg-emerald-50 hover:bg-emerald-100" },
 ];
 
-export default function HomePage() {
-  const newDrops = getNewDrops(4);
+export default async function HomePage() {
+  const newDrops = await getNewDrops(4);
 
   return (
     <div className="mx-auto max-w-7xl px-4 pb-24 pt-6 sm:px-6 sm:py-10 md:pb-10">

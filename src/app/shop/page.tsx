@@ -1,17 +1,19 @@
 import { Suspense } from "react";
-import { products } from "@/data/products";
+import { getAllProducts } from "@/lib/products-db";
 import { ProductCard } from "@/components/product/ProductCard";
 import { ShopShell } from "@/components/product/ShopShell";
 import type { Category, Condition } from "@/types";
+
+export const dynamic = "force-dynamic";
+
+export const metadata = {
+  title: "Shop All Drops — Dstuff",
+};
 
 interface SearchParams {
   category?: string;
   condition?: string;
 }
-
-export const metadata = {
-  title: "Shop All Drops — Dstuff",
-};
 
 export default async function ShopPage({
   searchParams,
@@ -19,7 +21,9 @@ export default async function ShopPage({
   searchParams: Promise<SearchParams>;
 }) {
   const params = await searchParams;
-  const filtered = products.filter((p) => {
+  const all = await getAllProducts();
+
+  const filtered = all.filter((p) => {
     if (params.category && p.category !== (params.category as Category)) return false;
     if (params.condition && p.condition !== (params.condition as Condition)) return false;
     return true;
