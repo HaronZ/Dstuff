@@ -43,7 +43,7 @@ export const useCart = create<CartStore>()(
     {
       name: "ukay-cart",
       storage: createJSONStorage(() =>
-        typeof window !== "undefined" ? localStorage : ({ getItem: () => null, setItem: () => {}, removeItem: () => {} } as Storage)
+        typeof window !== "undefined" ? localStorage : (({ getItem: () => null, setItem: () => {}, removeItem: () => {} }) as unknown as Storage)
       ),
     }
   )
