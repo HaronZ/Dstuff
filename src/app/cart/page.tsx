@@ -12,7 +12,7 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="mx-auto flex max-w-xl flex-col items-center justify-center px-4 py-32 text-center">
+      <div className="mx-auto flex max-w-xl flex-col items-center justify-center px-4 py-24 pb-32 text-center md:py-32">
         <ShoppingBag className="mb-4 h-16 w-16 text-gray-200" />
         <h1 className="text-xl font-black text-gray-900">Your cart is empty</h1>
         <p className="mt-2 text-gray-500">Reserve an item from our drops before it&apos;s gone.</p>
@@ -27,7 +27,7 @@ export default function CartPage() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-3xl px-4 pb-28 pt-6 sm:px-6 sm:py-10 md:pb-10">
       <h1 className="mb-8 text-2xl font-black text-gray-900">Your Cart</h1>
 
       <div className="space-y-4">

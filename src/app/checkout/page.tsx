@@ -53,10 +53,10 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-5xl px-4 pb-28 pt-6 sm:px-6 sm:py-10 md:pb-10">
       <h1 className="mb-8 text-2xl font-black text-gray-900">Checkout</h1>
 
-      <form onSubmit={handleOrder} className="grid gap-8 lg:grid-cols-[1fr_360px]">
+      <form onSubmit={handleOrder} className="grid gap-6 lg:grid-cols-[1fr_360px]">
         {/* Left: Shipping + Payment */}
         <div className="space-y-8">
           {/* Shipping */}

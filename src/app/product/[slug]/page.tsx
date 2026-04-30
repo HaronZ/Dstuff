@@ -28,8 +28,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   if (!product) notFound();
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+    <div className="mx-auto max-w-6xl px-4 pb-28 pt-6 sm:px-6 sm:py-10 md:pb-10">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10">
         {/* Gallery */}
         <ProductGallery images={product.images} name={product.name} />
 

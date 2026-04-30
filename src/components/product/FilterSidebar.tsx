@@ -8,7 +8,7 @@ const categories: Category[] = [
 ];
 const conditions: Condition[] = ["BNWT", "Like New", "Good", "Fair"];
 
-export function FilterSidebar() {
+export function FilterSidebar({ onSelect }: { onSelect?: () => void } = {}) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -22,21 +22,39 @@ export function FilterSidebar() {
       params.set(key, value);
     }
     router.push(`${pathname}?${params.toString()}`);
+    onSelect?.();
+  }
+
+  function clearAll() {
+    router.push(pathname);
+    onSelect?.();
   }
 
   const activeCategory = searchParams.get("category");
   const activeCondition = searchParams.get("condition");
+  const hasFilters = activeCategory || activeCondition;
 
   return (
-    <aside className="w-56 shrink-0 space-y-6">
+    <aside className="w-52 shrink-0 space-y-6">
+      {hasFilters && (
+        <button
+          onClick={clearAll}
+          className="text-xs font-semibold text-emerald-600 hover:text-emerald-500"
+        >
+          Clear all filters ×
+        </button>
+      )}
+
       <div>
-        <p className="mb-2 text-xs font-bold uppercase tracking-widest text-gray-400">Category</p>
-        <ul className="space-y-1">
+        <p className="mb-2 text-xs font-bold uppercase tracking-widest text-gray-400">
+          Category
+        </p>
+        <ul className="space-y-0.5">
           {categories.map((c) => (
             <li key={c}>
               <button
                 onClick={() => setFilter("category", c)}
-                className={`w-full rounded-lg px-3 py-1.5 text-left text-sm transition-colors ${
+                className={`w-full rounded-lg px-3 py-2 text-left text-sm transition-colors ${
                   activeCategory === c
                     ? "bg-gray-900 font-semibold text-white"
                     : "text-gray-600 hover:bg-gray-100"
@@ -48,14 +66,17 @@ export function FilterSidebar() {
           ))}
         </ul>
       </div>
+
       <div>
-        <p className="mb-2 text-xs font-bold uppercase tracking-widest text-gray-400">Condition</p>
-        <ul className="space-y-1">
+        <p className="mb-2 text-xs font-bold uppercase tracking-widest text-gray-400">
+          Condition
+        </p>
+        <ul className="space-y-0.5">
           {conditions.map((c) => (
             <li key={c}>
               <button
                 onClick={() => setFilter("condition", c)}
-                className={`w-full rounded-lg px-3 py-1.5 text-left text-sm transition-colors ${
+                className={`w-full rounded-lg px-3 py-2 text-left text-sm transition-colors ${
                   activeCondition === c
                     ? "bg-gray-900 font-semibold text-white"
                     : "text-gray-600 hover:bg-gray-100"
