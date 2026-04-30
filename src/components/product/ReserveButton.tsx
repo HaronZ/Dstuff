@@ -18,7 +18,7 @@ export function ReserveButton({ product }: { product: Product }) {
             : "bg-gray-900 text-white hover:bg-gray-700 active:scale-95"
         }`}
     >
-      {reserved ? "Reserved ✓" : "Reserve — One of a Kind"}
+      {reserved ? "Added to Cart ✓" : "Add to Cart"}
     </button>
   );
 }
