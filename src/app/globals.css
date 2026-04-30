@@ -117,6 +117,26 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Admin form utilities */
+.input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  outline: none;
+  background: white;
+  color: #111827;
+}
+.input:focus { border-color: #111827; }
+.label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
